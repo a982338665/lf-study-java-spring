@@ -101,6 +101,7 @@ public class analysisDOM4J {
     public static String getPackage(String name) {
         SAXReader reader = new SAXReader();
         try {
+            name="spring-ioc-custom\\src\\main\\resources\\"+name;
             String absolutePath = new File("").getAbsolutePath();
             System.out.println(absolutePath);
             Document document = reader.read(new File(name));

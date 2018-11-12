@@ -1,6 +1,5 @@
 package pers.li.custom.test;
 
-import org.junit.Test;
 import pers.li.custom.packages.context.ApplicationContext;
 import pers.li.custom.packages.context.ClassPathXmlApplicationContext;
 import pers.li.custom.service.TestService;
@@ -12,7 +11,7 @@ public class IOCTest {
 
     public static void main(String[] args) {
         ApplicationContext context=new ClassPathXmlApplicationContext("spring-context.xml");
-        TestService testService = (TestService) context.getBean("testService");
+        TestService testService = (TestService) context.getBean(    "testService");
         testService.test();
     }
 

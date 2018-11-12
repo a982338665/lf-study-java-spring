@@ -4,6 +4,7 @@ import pers.li.custom.dao.TestDaoInterface;
 import pers.li.custom.packages.annotation.Autowired;
 import pers.li.custom.packages.annotation.Repository;
 import pers.li.custom.packages.annotation.Service;
+import pers.li.custom.packages.utils.StringUtils;
 import pers.li.custom.packages.utils.analysisDOM4J;
 
 import java.io.File;
@@ -34,7 +35,6 @@ public class ClassPathXmlApplicationContext implements ApplicationContext {
     }
 
     public ClassPathXmlApplicationContext(String name) {
-        name="spring-ioc-custom\\src\\main\\resources\\"+name;
         //获取扫描包路径
         String aPackage = analysisDOM4J.getPackage(name);
         //确定扫描类-->递归查找使用注解的类
@@ -91,7 +91,7 @@ public class ClassPathXmlApplicationContext implements ApplicationContext {
                     Object o = aclass.newInstance();
                     //别名默认为类名的首字母小写
                     String simpleName = aclass.getSimpleName();
-                    String ali=toLowerCaseFirstOne(simpleName);
+                    String ali= StringUtils.toLowerCaseFirstOne(simpleName);
                     beanMap.put(ali,o);
                     //保存对应class实现的所有接口
                     Class<?>[] interfaces = aclass.getInterfaces();
@@ -112,11 +112,6 @@ public class ClassPathXmlApplicationContext implements ApplicationContext {
         }
     }
 
-    private String toLowerCaseFirstOne(String simpleName) {
-        char[] chars = simpleName.toCharArray();
-        chars[0]+=32;
-        return String.valueOf(chars);
-    }
 
     private void getScanAnnotationClass(String aPackage) {
         //获取class文件路径

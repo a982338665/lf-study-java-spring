@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans >
+    <!--开启mvc-->
+    <mvc.annotation-driven />
+
+</beans>
