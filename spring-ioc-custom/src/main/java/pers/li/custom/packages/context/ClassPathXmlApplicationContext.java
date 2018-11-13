@@ -19,6 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * create by lishengbo 2018/11/11
  */
+@SuppressWarnings("all")
 public class ClassPathXmlApplicationContext implements ApplicationContext {
 
     /**
@@ -36,7 +37,10 @@ public class ClassPathXmlApplicationContext implements ApplicationContext {
 
     public ClassPathXmlApplicationContext(String name) {
         //获取扫描包路径
-        String aPackage = analysisDOM4J.getPackage(name);
+        URL resource = this.getClass().getClassLoader().getResource(name);
+        File file = new File(resource.getFile());
+        System.out.println(file.getAbsolutePath());
+        String aPackage = analysisDOM4J.getPackage(file.getAbsolutePath());
         //确定扫描类-->递归查找使用注解的类
         getScanAnnotationClass(aPackage);
         //获取class对象进行IOC

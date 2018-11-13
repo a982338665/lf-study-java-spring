@@ -10,6 +10,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.*;
+import java.net.URL;
 import java.util.Iterator;
 import java.util.List;
 
@@ -21,8 +22,9 @@ import java.util.List;
 public class analysisDOM4J {
     static int count=0;
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-        parserDOM4J();
+//        parserDOM4J();
 //        createXMLDOM4J();
+        System.err.println(getPackage("spring-context.xml"));
     }
 
 
@@ -101,9 +103,10 @@ public class analysisDOM4J {
     public static String getPackage(String name) {
         SAXReader reader = new SAXReader();
         try {
-            name="spring-ioc-custom\\src\\main\\resources\\"+name;
-            String absolutePath = new File("").getAbsolutePath();
-            System.out.println(absolutePath);
+//            name="spring-ioc-custom\\src\\main\\resources\\"+name;
+//            String absolutePath = new File("").getAbsolutePath();
+//            String absolutePath = new File("").getAbsolutePath();
+//            System.out.println(absolutePath);
             Document document = reader.read(new File(name));
             //获取根节点bookstore
             Element rootElement = document.getRootElement();

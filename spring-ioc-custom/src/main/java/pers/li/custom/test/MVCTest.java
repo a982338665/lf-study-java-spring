@@ -30,7 +30,7 @@ public class MVCTest {
 // F:\github-work\spring\spring-ioc-custom\src\mian\resources
     private static List<String> analyzeFiles(File file) {
         List<String>  list=new ArrayList<>();
-        file.listFiles(new FileFilter() {
+        file.listFiles(new FileFilter(){
             @Override
             public boolean accept(File childFile) {
                 if(childFile.isDirectory()){
